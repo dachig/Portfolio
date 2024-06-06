@@ -16,6 +16,18 @@ export const ContactForm = () => {
   const sendEmail = (e) => {
     setLoading(true);
     e.preventDefault();
+    if (name.length === 0 || name.length === 1 || name.length > 20) {
+      setLoading(false);
+      return;
+    }
+    if (!email.includes("@") && !email.includes(".") && email.length === 0) {
+      setLoading(false);
+      return;
+    }
+    if (message.length < 30 || message.length > 250) {
+      setLoading(false);
+      return;
+    }
     emailjs
       .sendForm(
         process.env.NEXT_PUBLIC_SERVICE_ID,
@@ -47,7 +59,7 @@ export const ContactForm = () => {
       onSubmit={sendEmail}
     >
       <div className="flex flex-col">
-        <label>Name</label>
+        <label>Name *</label>
         <input
           className="bg-transparent border-2 border-purple-300 dark:border-purple-500 p-2 rounded-lg"
           type="text"
@@ -56,8 +68,18 @@ export const ContactForm = () => {
           value={name}
         />
       </div>
+      {name.length === 1 && (
+        <p className="text-xs text-red-500 dark:text-red-500">
+          Name must be longer than 2 characters
+        </p>
+      )}{" "}
+      {name.length > 20 && (
+        <p className="text-xs text-red-500 dark:text-red-500">
+          Name can not be longer than 20 characters
+        </p>
+      )}{" "}
       <div className="flex flex-col">
-        <label>Email</label>
+        <label>Email *</label>
         <input
           className="bg-transparent border-2 border-purple-300 dark:border-purple-500 p-2 rounded-lg"
           type="email"
@@ -65,23 +87,23 @@ export const ContactForm = () => {
           onChange={(e) => setEmail(e.target.value)}
           value={email}
         />
-        {!email.includes("@") && email.length > 0 && (
+        {!email.includes("@") && !email.includes(".") && email.length > 0 && (
           <p className="text-xs text-red-500 dark:text-red-500">
             Must be a valid e-mail address
           </p>
         )}
       </div>
       <div className="flex flex-col">
-        <label>Message</label>
+        <label>Message *</label>
         <textarea
           className="bg-transparent border-2 border-purple-300 dark:border-purple-500 p-2 rounded-lg"
           name="message"
           onChange={(e) => setMessage(e.target.value)}
           value={message}
         />
-        {message.length > 0 && message.length < 50 && (
+        {message.length > 0 && message.length < 30 && (
           <p className="text-xs text-red-500">
-            Message must be longer than 50 characters
+            Message must be longer than 30 characters
           </p>
         )}
       </div>
@@ -101,7 +123,7 @@ export const ContactForm = () => {
             data-testid="loader"
           />
         ) : sent ? (
-          <FaCheck />
+          <><span className="mr-2">Sent</span><FaCheck /></>
         ) : (
           "Send"
         )}
