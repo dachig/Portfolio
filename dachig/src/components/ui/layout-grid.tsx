@@ -3,6 +3,7 @@ import React, { useState, useRef, useEffect } from "react";
 import { motion } from "framer-motion";
 import { cn } from "@/lib/utils/cn";
 import Image from "next/image";
+import ShineBorder from "../magicui/shine-border";
 
 type Card = {
   id: number;
@@ -26,39 +27,47 @@ export const LayoutGrid = ({ cards }: { cards: Card[] }) => {
   };
 
   return (
-    <div className="w-full h-[600px] p-4 grid grid-cols-1 md:grid-cols-3  max-w-5xl mx-auto gap-4 relative z-50">
-      {cards.map((card, i) => (
-        <div
-          key={i}
-          className={cn(card.className, "border-2 dark:border-none rounded-xl")}
-        >
-          <motion.div
-            onClick={() => handleClick(card)}
+    <ShineBorder
+      className="text-2xl font-bold capitalize"
+      color={["#A07CFE", "#FE8FB5", "#FFBE7B"]}
+    >
+      <div className="w-full h-[600px] p-4 grid grid-cols-1 md:grid-cols-3  max-w-5xl mx-auto gap-4 relative z-50">
+        {cards.map((card, i) => (
+          <div
+            key={i}
             className={cn(
               card.className,
-              "relative overflow-hidden",
-              selected?.id === card.id
-                ? "rounded-lg cursor-pointer absolute inset-0 h-1/2 w-full md:w-1/2 m-auto z-50 flex justify-center items-center flex-wrap flex-col"
-                : lastSelected?.id === card.id
-                ? "z-40 bg-white rounded-xl h-full w-full"
-                : "bg-white rounded-lg h-full w-full"
+              "border-2 dark:border-none rounded-xl"
             )}
-            layout
           >
-            {selected?.id === card.id && <SelectedCard selected={selected} />}
-            <BlurImage card={card} />
-          </motion.div>
-        </div>
-      ))}
-      <motion.div
-        onClick={handleOutsideClick}
-        className={cn(
-          "absolute h-full w-full left-0 top-0 rounded-lg bg-black opacity-0 z-10",
-          selected?.id ? "pointer-events-auto" : "pointer-events-none"
-        )}
-        animate={{ opacity: selected?.id ? 0.3 : 0 }}
-      />
-    </div>
+            <motion.div
+              onClick={() => handleClick(card)}
+              className={cn(
+                card.className,
+                "relative overflow-hidden",
+                selected?.id === card.id
+                  ? "rounded-lg cursor-pointer absolute inset-0 h-1/2 w-full md:w-1/2 m-auto z-50 flex justify-center items-center flex-wrap flex-col"
+                  : lastSelected?.id === card.id
+                  ? "z-40 bg-white rounded-xl h-full w-full"
+                  : "bg-white rounded-lg h-full w-full"
+              )}
+              layout
+            >
+              {selected?.id === card.id && <SelectedCard selected={selected} />}
+              <BlurImage card={card} />
+            </motion.div>
+          </div>
+        ))}
+        <motion.div
+          onClick={handleOutsideClick}
+          className={cn(
+            "absolute h-full w-full left-0 top-0 rounded-lg bg-black opacity-0 z-10",
+            selected?.id ? "pointer-events-auto" : "pointer-events-none"
+          )}
+          animate={{ opacity: selected?.id ? 0.3 : 0 }}
+        />
+      </div>
+    </ShineBorder>
   );
 };
 
