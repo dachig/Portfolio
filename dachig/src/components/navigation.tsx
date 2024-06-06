@@ -9,7 +9,7 @@ export function Navigation() {
   const pathname = usePathname();
   const [active, setActive] = useState(pathname);
   return (
-    <nav className="max-w-xl flex justify-center md:justify-between mx-auto gap-4 flex-wrap">
+    <nav className="max-w-xs flex justify-center md:justify-between mx-auto gap-4 flex-wrap">
       <Link href="/">
         <HoverBorderGradient
           containerClassName="rounded-full"
@@ -24,48 +24,21 @@ export function Navigation() {
           Home
         </HoverBorderGradient>
       </Link>
-      <Link href="/expertise">
+      <Link href="/work">
         <HoverBorderGradient
           containerClassName="rounded-full"
           as="button"
           className={clsx(
-            active === "/expertise"
+            active === "/work"
               ? "bg-gradient-to-r from-indigo-300 to-purple-300 dark:from-indigo-500 dark:to-purple-500"
               : "bg-transparent",
             "text-black dark:text-white flex items-center"
           )}
         >
-          Expertise
+          Work
         </HoverBorderGradient>
       </Link>
-      <Link href="/experience">
-        <HoverBorderGradient
-          containerClassName="rounded-full"
-          as="button"
-          className={clsx(
-            active === "/experience"
-              ? "bg-gradient-to-r from-indigo-300 to-purple-300 dark:from-indigo-500 dark:to-purple-500"
-              : "bg-transparent",
-            "text-black dark:text-white flex items-center"
-          )}
-        >
-          Experience
-        </HoverBorderGradient>
-      </Link>
-      <Link href="/projects">
-        <HoverBorderGradient
-          containerClassName="rounded-full"
-          as="button"
-          className={clsx(
-            active === "/projects"
-              ? "bg-gradient-to-r from-indigo-300 to-purple-300 dark:from-indigo-500 dark:to-purple-500"
-              : "bg-transparent",
-            "text-black dark:text-white flex items-center"
-          )}
-        >
-          Projects
-        </HoverBorderGradient>
-      </Link>
+
       <Link href="/contact">
         <HoverBorderGradient
           containerClassName="rounded-full"

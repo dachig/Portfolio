@@ -13,7 +13,10 @@ const config: Config = {
   theme: {
     extend: {
       backgroundImage: {
-        "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
+        "radial-white-transparent":
+          "radial-gradient(circle, white, rgba(255, 255, 255, 0))",
+        "radial-sphere":
+          "radial-gradient(circle, rgba(255,255,255,1) 0%, rgba(255,255,255,0.8) 25%, rgba(255,255,255,0.6) 50%, rgba(168, 85, 247, .6) 75%, rgba(168, 85, 247, .8) 100%)",
         "gradient-conic":
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
       },

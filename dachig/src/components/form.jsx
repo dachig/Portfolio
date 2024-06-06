@@ -49,7 +49,7 @@ export const ContactForm = () => {
       <div className="flex flex-col">
         <label>Name</label>
         <input
-          className="bg-transparent border-2 border-indigo-300 dark:border-indigo-500 p-2 rounded-lg"
+          className="bg-transparent border-2 border-purple-300 dark:border-purple-500 p-2 rounded-lg"
           type="text"
           name="from_name"
           onChange={(e) => setName(e.target.value)}
@@ -59,23 +59,31 @@ export const ContactForm = () => {
       <div className="flex flex-col">
         <label>Email</label>
         <input
-          className="bg-transparent border-2 border-indigo-300 dark:border-indigo-500 p-2 rounded-lg"
+          className="bg-transparent border-2 border-purple-300 dark:border-purple-500 p-2 rounded-lg"
           type="email"
           name="from_email"
           onChange={(e) => setEmail(e.target.value)}
           value={email}
         />
-        {!email.includes("@") && email.length > 0 && <p className="text-xs text-red-500 dark:text-red-500">Must be a valid e-mail address</p>}
+        {!email.includes("@") && email.length > 0 && (
+          <p className="text-xs text-red-500 dark:text-red-500">
+            Must be a valid e-mail address
+          </p>
+        )}
       </div>
       <div className="flex flex-col">
         <label>Message</label>
         <textarea
-          className="bg-transparent border-2 border-indigo-300 dark:border-indigo-500 p-2 rounded-lg"
+          className="bg-transparent border-2 border-purple-300 dark:border-purple-500 p-2 rounded-lg"
           name="message"
           onChange={(e) => setMessage(e.target.value)}
           value={message}
         />
-        {message.length > 0 && message.length < 50 && <p className="text-xs text-red-500">Message must be longer than 50 characters</p>}
+        {message.length > 0 && message.length < 50 && (
+          <p className="text-xs text-red-500">
+            Message must be longer than 50 characters
+          </p>
+        )}
       </div>
       <HoverBorderGradient
         containerClassName="rounded-full"

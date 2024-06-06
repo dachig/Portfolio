@@ -28,7 +28,7 @@ export default function Home() {
         </Highlight>{" "}
         A passionate webdeveloper who likes to create unique experiences.
         <div className="flex justify-center gap-4 mt-8">
-          <button onClick={() => router.push("/expertise")} className="text-xs">
+          <button onClick={() => router.push("/work")} className="text-xs">
             <HoverBorderGradient
               containerClassName="rounded-full"
               as="button"
