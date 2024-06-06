@@ -9,7 +9,7 @@ export function Navigation() {
   const pathname = usePathname();
   const [active, setActive] = useState(pathname);
   return (
-    <nav className="max-w-xl flex justify-between mx-auto">
+    <nav className="max-w-xl flex flex-col sm:flex-row justify-between mx-auto">
       <Link href="/">
         <HoverBorderGradient
           containerClassName="rounded-full"

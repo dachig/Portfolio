@@ -1,14 +1,21 @@
 "use client";
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import emailjs from "@emailjs/browser";
 import { HoverBorderGradient } from "./ui/hover-border-gradient";
+import { FaCheck } from "react-icons/fa";
+import ClipLoader from "react-spinners/ClipLoader";
 
 export const ContactForm = () => {
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [message, setMessage] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [sent, setSent] = useState(false);
   const form = useRef();
 
   const sendEmail = (e) => {
+    setLoading(true);
     e.preventDefault();
-    console.log(process.env.NEXT_PUBLIC_PUBLIC_KEY);
     emailjs
       .sendForm(
         process.env.NEXT_PUBLIC_SERVICE_ID,
@@ -20,12 +27,17 @@ export const ContactForm = () => {
       )
       .then(
         () => {
-          console.log("SUCCESS!");
+          setSent(true);
+          setName("");
+          setEmail("");
+          setMessage("");
+          setLoading(false);
         },
         (error) => {
           console.log("FAILED...", error.text);
         }
-      );
+      )
+      .finally(() => setLoading(false));
   };
 
   return (
@@ -40,6 +52,8 @@ export const ContactForm = () => {
           className="bg-transparent border-2 border-indigo-300 dark:border-indigo-500 p-2 rounded-lg"
           type="text"
           name="from_name"
+          onChange={(e) => setName(e.target.value)}
+          value={name}
         />
       </div>
       <div className="flex flex-col">
@@ -48,25 +62,41 @@ export const ContactForm = () => {
           className="bg-transparent border-2 border-indigo-300 dark:border-indigo-500 p-2 rounded-lg"
           type="email"
           name="from_email"
+          onChange={(e) => setEmail(e.target.value)}
+          value={email}
         />
+        {!email.includes("@") && email.length > 0 && <p className="text-xs text-red-500 dark:text-red-500">Must be a valid e-mail address</p>}
       </div>
       <div className="flex flex-col">
         <label>Message</label>
         <textarea
           className="bg-transparent border-2 border-indigo-300 dark:border-indigo-500 p-2 rounded-lg"
           name="message"
+          onChange={(e) => setMessage(e.target.value)}
+          value={message}
         />
+        {message.length > 0 && message.length < 50 && <p className="text-xs text-red-500">Message must be longer than 50 characters</p>}
       </div>
       <HoverBorderGradient
         containerClassName="rounded-full"
         as="button"
+        type="submit" // Ensure button type is "submit" for form submission
         className="bg-gradient-to-r from-indigo-300 to-purple-300 dark:from-indigo-500 dark:to-purple-500 text-black dark:text-white flex items-center"
       >
-        <input
-          className="hover:cursor-pointer px-4"
-          type="submit"
-          value="Send"
-        />
+        {loading ? (
+          <ClipLoader
+            className="border-white"
+            color="#000000"
+            loading={loading}
+            size={25}
+            aria-label="Loading Spinner"
+            data-testid="loader"
+          />
+        ) : sent ? (
+          <FaCheck />
+        ) : (
+          "Send"
+        )}
       </HoverBorderGradient>
     </form>
   );
