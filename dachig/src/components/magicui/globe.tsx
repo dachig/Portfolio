@@ -4,6 +4,7 @@ import { cn } from "@/lib/utils/cn";
 import createGlobe, { COBEOptions } from "cobe";
 import { useCallback, useEffect, useRef } from "react";
 import { useSpring } from "react-spring";
+import AnimatedGradientText from "./animated-gradient-text";
 
 const GLOBE_CONFIG: COBEOptions = {
   width: 800,
@@ -106,7 +107,16 @@ export function Globe({
         className
       )}
     >
-      <h2 className="text-3xl font-mdeium text-center">Let's get in touch!</h2>
+      {" "}
+      <AnimatedGradientText>
+        <h2
+          className={cn(
+            `text-2xl md:text-3xl font-medium inline animate-gradient bg-gradient-to-r from-[#ffaa40] via-[#9c40ff] to-[#ffaa40] bg-[length:var(--bg-size)_100%] bg-clip-text text-transparent`
+          )}
+        >
+          Let's get in touch!
+        </h2>{" "}
+      </AnimatedGradientText>
       <canvas
         className={cn(
           "h-full w-full opacity-0 transition-opacity duration-500 [contain:layout_paint_size]"

@@ -29,6 +29,14 @@ const config: Config = {
             "background-position": "0% 0%",
           },
         },
+        gradient: {
+          to: {
+            backgroundPosition: "var(--bg-size) 0",
+          },
+        },
+      },
+      animation: {
+        gradient: "gradient 8s linear infinite",
       },
     },
   },
