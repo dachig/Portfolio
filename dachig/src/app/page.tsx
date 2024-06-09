@@ -21,7 +21,7 @@ export default function Home() {
           duration: 0.5,
           ease: [0.4, 0.0, 0.2, 1],
         }}
-        className="text-2xl px-4 md:text-4xl lg:text-5xl font-bold text-neutral-700 dark:text-white max-w-4xl leading-relaxed lg:leading-snug text-center mx-auto "
+        className="text-2xl px-4 md:text-4xl lg:text-5xl font-bold text-gray-700 dark:text-white max-w-4xl leading-relaxed lg:leading-snug text-center mx-auto "
       >
         <Highlight className="text-black dark:text-white">
           I'm Dachi Giorgobiani.
@@ -32,7 +32,7 @@ export default function Home() {
             <HoverBorderGradient
               containerClassName="rounded-full"
               as="button"
-              className="bg-gradient-to-r from-indigo-300 to-purple-300 dark:from-indigo-500 dark:to-purple-500 text-black dark:text-white flex items-center"
+              className="bg-gradient-to-r from-indigo-300 to-purple-300 dark:from-indigo-500 dark:to-purple-500 text-gray-700 dark:text-white flex items-center"
             >
               Discover
             </HoverBorderGradient>{" "}
@@ -41,7 +41,7 @@ export default function Home() {
             <HoverBorderGradient
               containerClassName="rounded-full"
               as="button"
-              className="dark:bg-black bg-white text-black dark:text-white flex items-center"
+              className="dark:bg-black bg-white text-gray-700 dark:text-white flex items-center"
             >
               Let's Talk
             </HoverBorderGradient>

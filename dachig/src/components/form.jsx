@@ -16,7 +16,7 @@ export const ContactForm = () => {
   const sendEmail = (e) => {
     setLoading(true);
     e.preventDefault();
-    if (name.length === 0 || name.length === 1 || name.length > 20) {
+    if (name.length === 0 || name.length === 1 || name.length > 25) {
       setLoading(false);
       return;
     }
@@ -54,7 +54,7 @@ export const ContactForm = () => {
 
   return (
     <form
-      className="flex w-full flex-col gap-4"
+      className="flex w-full flex-col gap-4 text-gray-700 dark:text-white"
       ref={form}
       onSubmit={sendEmail}
     >
@@ -73,9 +73,9 @@ export const ContactForm = () => {
           Name must be longer than 2 characters
         </p>
       )}{" "}
-      {name.length > 20 && (
+      {name.length > 25 && (
         <p className="text-xs text-red-500 dark:text-red-500">
-          Name can not be longer than 20 characters
+          Name can not be longer than 25 characters
         </p>
       )}{" "}
       <div className="flex flex-col">
@@ -111,7 +111,7 @@ export const ContactForm = () => {
         containerClassName="rounded-full"
         as="button"
         type="submit" // Ensure button type is "submit" for form submission
-        className="bg-gradient-to-r from-indigo-300 to-purple-300 dark:from-indigo-500 dark:to-purple-500 text-black dark:text-white flex items-center"
+        className="bg-gradient-to-r from-indigo-300 to-purple-300 dark:from-indigo-500 dark:to-purple-500 text-gray-700 dark:text-white flex items-center"
       >
         {loading ? (
           <ClipLoader
@@ -123,7 +123,10 @@ export const ContactForm = () => {
             data-testid="loader"
           />
         ) : sent ? (
-          <><span className="mr-2">Sent</span><FaCheck /></>
+          <>
+            <span className="mr-2">Sent</span>
+            <FaCheck />
+          </>
         ) : (
           "Send"
         )}

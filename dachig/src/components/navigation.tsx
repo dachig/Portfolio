@@ -18,7 +18,7 @@ export function Navigation() {
             active === "/"
               ? "bg-gradient-to-r from-indigo-300 to-purple-300 dark:from-indigo-500 dark:to-purple-500"
               : "bg-transparent",
-            "text-black dark:text-white flex items-center"
+            "text-gray-700 dark:text-white flex items-center"
           )}
         >
           Home
@@ -32,7 +32,7 @@ export function Navigation() {
             active === "/work"
               ? "bg-gradient-to-r from-indigo-300 to-purple-300 dark:from-indigo-500 dark:to-purple-500"
               : "bg-transparent",
-            "text-black dark:text-white flex items-center"
+            "text-gray-700 dark:text-white flex items-center"
           )}
         >
           Work
@@ -47,7 +47,7 @@ export function Navigation() {
             active === "/contact"
               ? "bg-gradient-to-r from-indigo-300 to-purple-300 dark:from-indigo-500 dark:to-purple-500"
               : "bg-transparent",
-            "text-black dark:text-white flex items-center"
+            "text-gray-700 dark:text-white flex items-center"
           )}
         >
           Contact

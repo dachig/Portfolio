@@ -1,3 +1,4 @@
+import { ExperienceCard } from "@/components/experienceCard";
 import IconCloud from "@/components/magicui/icon-cloud";
 import { Navigation } from "@/components/navigation";
 import { AnimatedPinDemo } from "@/components/projectPinCard";
@@ -36,11 +37,17 @@ export default function Expertise() {
         </div>
 
         <div className="flex flex-col gap-4 lg:gap-16">
-          <h2 className="text-center text-xl lg:text-4xl">
-            Some of my{" "}
-            <span className="text-purple-400">recent projects</span>
+          <h2 className="text-center text-xl lg:text-4xl text-gray-700">
+            Some of my <span className="text-purple-400">recent projects</span>
           </h2>
           <AnimatedPinDemo />
+        </div>
+
+        <div className="flex flex-col gap-4 lg:gap-8 mt-8 md:mt-16">
+          <h2 className="text-center text-xl lg:text-4xl text-gray-700">
+            Some of my <span className="text-purple-400">recent experiences</span>
+          </h2>
+          <ExperienceCard/>
         </div>
       </div>
     </main>
