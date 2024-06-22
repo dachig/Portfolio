@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { GoArrowUpRight } from "react-icons/go";
+import { FiExternalLink } from "react-icons/fi";
 
 export function ExperienceCard() {
   return (
@@ -27,8 +27,12 @@ export function ExperienceCard() {
           <br />
           Rewriting tests for another client project.
           <br />
-          <Link className="flex gap-1 items-center mt-2 text-blue-400" href="https://meteorblog.vercel.app" target="_blank">
-            Link to blog <GoArrowUpRight />
+          <Link
+            className="flex gap-1 items-center mt-2 text-blue-400"
+            href="https://meteorblog.vercel.app"
+            target="_blank"
+          >
+            Link to blog <FiExternalLink />
           </Link>
         </p>
       </div>
@@ -45,12 +49,15 @@ export function ExperienceCard() {
           Group task with classmates as webdevelopers
         </h4>
         <p className="text-slate-500 mt-4">
-          Helped Develop a full-stack internal communcation system for intern mentors to communicate with interns at the company.
+          Helped Develop a full-stack internal communcation system for intern
+          mentors to communicate with interns at the company.
           <br />
-          Communication happens through posts and comments on the interns timeline and progress.
+          Communication happens through posts and comments on the interns
+          timeline and progress.
           <br />
           <br />
-          Whilst mainly remaining on the front-end with React I also helped with back-end MongoDB issues.
+          Whilst mainly remaining on the front-end with React I also helped with
+          back-end MongoDB issues.
         </p>
       </div>
     </div>
